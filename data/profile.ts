@@ -198,7 +198,6 @@ export const ui = {
   readCase: tx("Read case study", "케이스 스터디 보기"),
   viewRepo: tx("View repository", "저장소 보기"),
   evidenceIn: tx("Evidence", "근거"),
-  pending: tx("확인 필요", "확인 필요"),
   detail: {
     back: tx("All projects", "전체 프로젝트"),
     onThisPage: tx("On this page", "목차"),

@@ -4,7 +4,7 @@ import type { Project } from "./types";
 
 /**
  * Project content. Facts come from the public repos, the Obsidian wiki and source files;
- * see README "Content sources". Add a project by appending an object — `detail` makes a case-study page.
+ * numbers must match those sources. Add a project by appending an object — `detail` makes a case-study page.
  */
 export const projects: Project[] = [
   // ───────────────────────────────────────────── 1. Message Notification Router
