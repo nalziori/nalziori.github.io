@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+/* Light is the base palette; dark follows the OS setting. */
+:root {
+  --bg: #f6f5f1;
+  --surface: #ffffff;
+  --ink: #121212;
+  --ink-2: #3b3a36;
+  --muted: #5f5e58;
+  --line: #e2e0d8;
+  --line-strong: #c9c6bc;
+  --accent: #c2410c;
+  --accent-soft: #fdf0e7;
+  --ok: #15803d;
+  --warn: #a15c07;
+  --info: #1d4ed8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e0e0c;
+    --surface: #171715;
+    --ink: #edebe4;
+    --ink-2: #cfccc3;
+    --muted: #a19e94;
+    --line: #2b2a27;
+    --line-strong: #46453f;
+    --accent: #fb923c;
+    --accent-soft: #2a1a0f;
+    --ok: #4ade80;
+    --warn: #fbbf24;
+    --info: #93c5fd;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-info: var(--info);
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@utility container-x {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (min-width: 640px) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility kicker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  /* Wide tracking reads well on Latin caps but pulls Hangul syllables apart. */
+  &:lang(ko) {
+    letter-spacing: 0.02em;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+/* Korean: break between words, not inside them. */
+[lang="ko"] {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Hero pipeline: a dot travelling down the rail. */
+@keyframes rail-travel {
+  0% { top: 0.75rem; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: calc(100% - 1.25rem); opacity: 0; }
+}
+.rail-dot {
+  animation: rail-travel 6s ease-in-out infinite;
+}
+
+@keyframes cue {
+  0%, 100% { transform: translateY(0); opacity: 0.4; }
+  50% { transform: translateY(4px); opacity: 1; }
+}
+.scroll-cue {
+  animation: cue 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .rail-dot { display: none; }
+}
