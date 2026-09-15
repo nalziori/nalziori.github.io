@@ -11,7 +11,7 @@ Next.js 16 (App Router, static export) · TypeScript · Tailwind CSS v4 · Frame
 
 ```bash
 npm install
-npm run dev     # http://localhost:3000 — "확인 필요" 표시가 보이는 모드
+npm run dev     # http://localhost:3000
 npm run build   # out/ 폴더에 정적 사이트 생성
 python -m http.server 4173 --directory out   # 빌드 결과 확인
 ```
@@ -58,16 +58,6 @@ scripts/flatten-segments.mjs   Next 16 static export 404 우회 (아래 참고)
 **아키텍처 단계**(`architecture.stages`)의 `kind`가 색을 정합니다:
 `llm` 주황 · `model` 점선(로컬 모델) · `code` 실선(결정론 코드) · `gate` 이중선(검증) · `input` / `output`.
 배열 안에 배열을 넣으면 병렬 단계로 그려집니다.
-
-## 배포 전에 채울 것 (확인 필요)
-
-| 항목 | 위치 |
-|---|---|
-| LinkedIn URL | `data/profile.ts` → `linkedin` |
-| 이력서 PDF | `public/`에 파일을 넣고 `resume: "/resume.pdf"` |
-| 실제 배포 주소 | 환경변수 `NEXT_PUBLIC_SITE_URL` (canonical · hreflang · sitemap에 사용) |
-
-`npm run dev`에서는 빈 링크 자리에 "확인 필요"가 보이고, 프로덕션 빌드에서는 해당 버튼이 자동으로 숨겨집니다.
 
 ## GitHub Pages 배포
 

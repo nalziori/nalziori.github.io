@@ -16,8 +16,6 @@ export const profile = {
   ),
   email: "wodud00744@gmail.com",
   github: "https://github.com/nalziori",
-  linkedin: null as string | null, // 확인 필요: LinkedIn profile URL
-  resume: null as string | null, // 확인 필요: put the PDF in public/ and set e.g. "/resume.pdf"
   currently: tx(
     "Currently in POSCO's K-Digital on-device AI program (560 h, until Nov 2026) and building an offline agent on Jetson Orin Nano with a team of four.",
     "현재 POSCO K-디지털 온디바이스 AI 과정(560시간, 2026년 11월 수료 예정)을 수강하며, 4인 팀으로 Jetson Orin Nano 위의 오프라인 에이전트를 만들고 있습니다.",

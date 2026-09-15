@@ -1,8 +1,8 @@
-import { ArrowDown, FileText, Mail } from "lucide-react";
+import { ArrowDown, Mail } from "lucide-react";
 import { HeroPipeline } from "@/components/diagrams";
 import { LangToggle } from "@/components/LangToggle";
 import { CountUp } from "@/components/motion";
-import { Evidence, EvidenceLegend, GithubIcon, LinkedinIcon, Pending, pillButton } from "@/components/ui";
+import { Evidence, EvidenceLegend, GithubIcon, pillButton } from "@/components/ui";
 import { profile, proof, ui } from "@/data/profile";
 import { tx, type Lang } from "@/lib/i18n";
 
@@ -45,26 +45,6 @@ export function Hero({ lang }: { lang: Lang }) {
                   GitHub
                 </a>
               </li>
-              {profile.linkedin ? (
-                <li>
-                  <a className={pillButton} href={profile.linkedin} target="_blank" rel="noopener noreferrer">
-                    <LinkedinIcon className="size-4" />
-                    LinkedIn
-                  </a>
-                </li>
-              ) : (
-                <Pending label="LinkedIn" />
-              )}
-              {profile.resume ? (
-                <li>
-                  <a className={pillButton} href={profile.resume}>
-                    <FileText aria-hidden className="size-4" />
-                    {lang === "ko" ? "이력서" : "Resume"}
-                  </a>
-                </li>
-              ) : (
-                <Pending label={lang === "ko" ? "이력서" : "Resume"} />
-              )}
               <li>
                 <a className={pillButton} href={`mailto:${profile.email}`}>
                   <Mail aria-hidden className="size-4" />

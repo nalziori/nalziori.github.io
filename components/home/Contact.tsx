@@ -1,6 +1,6 @@
-import { ArrowUpRight, FileText } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/motion";
-import { Evidence, GithubIcon, LinkedinIcon, Pending, pillButton, Section } from "@/components/ui";
+import { Evidence, GithubIcon, pillButton, Section } from "@/components/ui";
 import { profile, research, ui } from "@/data/profile";
 import type { Lang } from "@/lib/i18n";
 
@@ -65,26 +65,6 @@ export function Contact({ lang }: { lang: Lang }) {
               github.com/nalziori
             </a>
           </li>
-          {profile.linkedin ? (
-            <li>
-              <a className={pillButton} href={profile.linkedin} target="_blank" rel="noopener noreferrer">
-                <LinkedinIcon className="size-4" />
-                LinkedIn
-              </a>
-            </li>
-          ) : (
-            <Pending label="LinkedIn" />
-          )}
-          {profile.resume ? (
-            <li>
-              <a className={pillButton} href={profile.resume}>
-                <FileText aria-hidden className="size-4" />
-                {lang === "ko" ? "이력서" : "Resume"}
-              </a>
-            </li>
-          ) : (
-            <Pending label={lang === "ko" ? "이력서" : "Resume"} />
-          )}
         </ul>
       </Reveal>
     </Section>

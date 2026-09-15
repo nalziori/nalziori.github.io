@@ -26,7 +26,7 @@ export function Home({ lang }: { lang: Lang }) {
     jobTitle: "AI Engineer",
     url: SITE_URL,
     email: `mailto:${profile.email}`,
-    sameAs: [profile.github, ...(profile.linkedin ? [profile.linkedin] : [])],
+    sameAs: [profile.github],
     alumniOf: { "@type": "CollegeOrUniversity", name: "Kyungpook National University" },
     knowsAbout: ["AI agents", "Multimodal AI", "LLM evaluation", "Python", "C++", "Computer vision", "Edge AI", "Medical imaging data", "AWS"],
   };
