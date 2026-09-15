@@ -1,6 +1,7 @@
-// ponytail: workaround for Next 16.3 static export — segment prefetch files are written as nested
-// folders (__next.ko/__PAGE__.txt) but the client requests them dot-joined (__next.ko.__PAGE__.txt),
-// which 404s on any static host. Writes the dot-joined copies; delete once Next writes them itself.
+// ponytail: workaround for Next 16.3 static export built on Windows — segment prefetch files are written
+// as nested folders (__next.ko/__PAGE__.txt) while the client requests them dot-joined (__next.ko.__PAGE__.txt),
+// which 404s on a static host. Linux builds (the GitHub Actions deploy) already write dot-joined names, so this
+// is a no-op there. Delete once Next fixes the Windows path handling.
 import { copyFileSync, readdirSync } from "node:fs";
 import { join, relative, sep } from "node:path";
 

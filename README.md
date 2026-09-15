@@ -82,6 +82,6 @@ $env:NEXT_PUBLIC_BASE_PATH="/portfolio"; $env:NEXT_PUBLIC_SITE_URL="https://nalz
 
 ## 알려진 사항
 
-- `scripts/flatten-segments.mjs` — Next 16.3의 static export는 프리페치용 세그먼트 파일을 폴더 구조(`__next.ko/__PAGE__.txt`)로 쓰지만, 브라우저는 점으로 이어진 이름(`__next.ko.__PAGE__.txt`)으로 요청해 정적 호스팅에서 404가 납니다. 빌드 직후 점 이름 복사본을 만들어 해결합니다. Next가 수정하면 스크립트와 `package.json`의 `&& node scripts/...`를 지우면 됩니다.
+- `scripts/flatten-segments.mjs` — **Windows에서 빌드하면** Next 16.3 static export가 프리페치용 세그먼트 파일을 폴더 구조(`__next.ko/__PAGE__.txt`)로 써서, 브라우저가 요청하는 점 이름(`__next.ko.__PAGE__.txt`)이 404가 납니다. 빌드 직후 점 이름 복사본을 만들어 해결합니다. GitHub Actions(리눅스) 빌드에서는 처음부터 올바르게 생성되어 아무것도 하지 않습니다.
 - 다크 모드는 OS 설정을 따릅니다. `prefers-reduced-motion`이면 모든 애니메이션이 꺼집니다.
 - 콘텐츠 출처: GitHub 공개 저장소, LLM-Wiki(Obsidian)에 검증해 둔 정리 페이지, 원본 문서(결과보고서·논문 PDF 등). 원자료와 달랐던 표현은 원자료 기준으로 고쳤습니다.
