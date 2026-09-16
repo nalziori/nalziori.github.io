@@ -39,8 +39,8 @@ export const projects: Project[] = [
       role: {
         mine: [
           tx("Solo entry. Wrote the pipeline spec and chose Claude vision plus local Whisper under a cost limit, requiring a cost report before any API run.", "개인 참가. 파이프라인 명세를 작성하고, 비용 한도 안에서 Claude 비전과 로컬 Whisper 조합을 골랐으며, API 실행 전에는 비용 보고를 먼저 받았습니다."),
-          tx("Spotted that several .jpg files were really WebP or AVIF and required format detection by content.", "`.jpg` 파일 일부가 실제로는 WebP·AVIF라는 것을 발견하고, 확장자가 아니라 내용으로 포맷을 판별하게 했습니다."),
-          tx("Designed the evaluation loop: asked for a separate held-out set, proposed the internal reasoning fields and the key-phrase experiment, and made the call to revert it when it regressed.", "평가 루프를 설계했습니다. 별도 홀드아웃 세트를 요청하고, 내부 추론 필드와 핵심 구절 실험을 제안했으며, 퇴보가 확인되자 되돌리기로 결정했습니다."),
+          tx("Spotted that several .jpg files were really WebP or AVIF and required format detection by content.", "`.jpg` 파일 일부가 실제로는 WebP·AVIF임을 발견하고 확장자가 아니라 내용으로 포맷을 판별하게 했습니다."),
+          tx("Designed the evaluation loop: asked for a separate held-out set, proposed the internal reasoning fields and the key-phrase experiment, and made the call to revert it when it regressed.", "평가 루프를 설계했습니다. 별도 홀드아웃 세트를 요청하고 내부 추론 필드와 핵심 구절 실험을 제안했습니다. 퇴보가 확인되자 되돌리기로 결정했습니다."),
           tx("Managed API spend and narrowed verification scope as the budget ran down.", "예산이 줄어드는 상황에서 API 지출을 관리하고 검증 범위를 조정했습니다."),
         ],
         others: [
@@ -53,7 +53,7 @@ export const projects: Project[] = [
         tx("File extensions lie. Several .jpg files were WebP, AVIF or PNG — and the vision API rejects AVIF.", "확장자를 믿을 수 없습니다. `.jpg` 중 일부가 실제로는 WebP·AVIF·PNG였고, 비전 API는 AVIF를 받지 않습니다."),
         tx("Personalization. Sender trust, group and business relationships, opt-ins and past reactions all change the right action.", "개인화가 필요합니다. 발신자 신뢰도, 그룹·비즈니스 관계, 수신 동의, 과거 반응이 모두 정답 행동을 바꿉니다."),
         tx("Evidence. Every decision must cite past message ids that actually justify it.", "근거가 필요합니다. 결정마다 그 판단을 실제로 뒷받침하는 과거 메시지 id를 인용해야 합니다."),
-        tx("Reliability. A failed classification can't drop a row; the contract is one row per message.", "신뢰성이 필요합니다. 분류에 실패해도 행을 빠뜨리면 안 되며, 메시지마다 한 행이라는 출력 계약이 있습니다."),
+        tx("Reliability. A failed classification can't drop a row; the contract is one row per message.", "신뢰성도 요건입니다. 분류에 실패해도 행을 빠뜨리면 안 되며, 메시지마다 한 행이라는 출력 계약이 있습니다."),
         tx("Only 30 solved examples — easy to overfit within 24 hours.", "정답이 공개된 예시는 30건뿐이라 24시간 안에 과적합하기 쉽습니다."),
       ],
       architecture: {
@@ -358,7 +358,7 @@ export const projects: Project[] = [
         mine: [
           tx("Personal project: defined the scope, the safety model (allow / confirm / refuse) and what each check must guarantee.", "개인 프로젝트: 범위와 안전 모델(통과·확인·거부), 각 검사가 보장해야 할 조건을 정했습니다."),
           tx("Restructured v1 (a multi-turn tool loop) into one intent call plus local execution under an on-device assumption.", "온디바이스를 가정해 v1의 멀티턴 도구 루프를 ‘의도 추론 1회 + 로컬 실행’ 구조로 바꿨습니다."),
-          tx("Found and closed the hole where the model could fill confirmed=True and pass its own gate.", "모델이 confirmed=True를 스스로 채워 자기 게이트를 통과할 수 있는 구멍을 찾아 막았습니다."),
+          tx("Found and closed the hole where the model could fill confirmed=True and pass its own gate.", "모델이 confirmed=True를 스스로 채워 자기 게이트를 통과할 수 있었습니다. 그 구멍을 찾아 막았습니다."),
           tx("Designed the evaluation: four scored metrics, a 14 / 9 tune/held-out split and repeated runs.", "평가를 설계했습니다. 채점 지표 4개, 튜닝 14 / 홀드아웃 9 분리, 반복 실행."),
         ],
         others: [
@@ -440,7 +440,7 @@ export const projects: Project[] = [
         tx("Four metrics: tool selection, arguments (including message-body checks), gate decision and correct abstention.", "지표 4개: 도구 선택, 인자(메시지 본문 검사 포함), 게이트 판단, 올바른 미호출."),
         tx("Repeated measurement: --eval --repeat 5 clears caches, re-queries the model and reports mean, min, max and standard deviation.", "반복 측정: --eval --repeat 5는 캐시를 비우고 모델을 다시 호출해 평균·최소·최대·표준편차를 보고합니다."),
         tx("Deterministic safety paths — refusal, expiry, state re-check — are verified by --selftest without the model. The eval's gate metric covers the first confirmation decision only.", "결정론적 안전 경로(거부·만료·상태 재검사)는 모델 없이 --selftest로 검증합니다. eval의 게이트 지표는 첫 확인 판단까지만 봅니다."),
-        tx("Variance, reported honestly: after the sign-convention fix, 1 of 8 tuning runs misclassified one case (1 of 112 case evaluations). Five clean repeats mean a low failure rate, not a zero one.", "변동도 그대로 적었습니다. 부호 규약 수정 후 튜닝 실행 8회 중 1회에서 1건이 틀렸습니다(케이스 평가 112건 중 1건). 5회 연속 100%는 실패율이 낮다는 뜻이지 0이라는 뜻이 아닙니다."),
+        tx("Variance, reported honestly: after the sign-convention fix, 1 of 8 tuning runs misclassified one case (1 of 112 case evaluations). Five clean repeats mean a low failure rate, not a zero one.", "변동도 그대로 적었습니다. 부호 규약 수정 후 튜닝 실행 8회 중 1회에서 1건이 틀렸습니다(케이스 평가 112건 중 1건). 5회 연속 100%는 실패율이 낮다는 뜻입니다. 0이라는 뜻은 아닙니다."),
       ],
       results: [
         { value: "100%", label: tx("tool · args · gate · abstain", "도구 · 인자 · 게이트 · 미호출"), context: tx("tune 14 + held-out 9, 5 repeats each (10 of 10 runs)", "튜닝 14 + 홀드아웃 9, 각 5회 반복 (10회 전부)"), evidence: "measured" },
@@ -452,7 +452,7 @@ export const projects: Project[] = [
       ],
       lessons: [
         tx("What you don't score, you don't see: four perfect metrics hid a broken message body.", "채점하지 않는 것은 보이지 않습니다. 완벽한 지표 4개가 망가진 메시지 본문을 숨기고 있었습니다."),
-        tx("A 100% from one run is a sample, not a rate.", "한 번 실행해서 나온 100%는 표본이지 비율이 아닙니다."),
+        tx("A 100% from one run is a sample, not a rate.", "한 번 실행해서 나온 100%는 표본입니다. 비율이 아닙니다."),
         tx("Put safety in control flow, not in the prompt.", "안전은 프롬프트가 아니라 제어 흐름에 넣습니다."),
         tx("Every threshold here (30 s, 80 km/h, the speech-confidence cutoff) is an estimate and documented as one; real vehicle data would be needed to set them.", "여기의 임계값(30초, 시속 80km, 음성 인식 신뢰도 기준)은 모두 추정치이고 그렇게 기록했습니다. 실제 값은 차량 데이터로 정해야 합니다."),
       ],
@@ -501,9 +501,9 @@ export const projects: Project[] = [
       ),
       role: {
         mine: [
-          tx("Collected DICOM files with a recursive pydicom scanner, relaxing parser validation so non-standard files didn't stop the batch.", "pydicom 재귀 탐색으로 DICOM 파일을 수집하고, 표준을 벗어난 파일이 배치를 멈추지 않도록 파서 검증을 완화했습니다."),
-          tx("Implemented 16 domain validation rules and kept each result as a per-row flag.", "16개 도메인 검증 규칙을 구현하고, 결과를 행마다 플래그로 남겼습니다."),
-          tx("Joined images to radiology reports and enforced the four-view (left/right × CC/MLO) study requirement.", "영상과 판독 리포트를 조인하고, 한 검사에 좌우 × CC/MLO 4장이 모두 있어야 한다는 조건을 적용했습니다."),
+          tx("Collected DICOM files with a recursive pydicom scanner, relaxing parser validation so non-standard files didn't stop the batch.", "pydicom 재귀 탐색으로 DICOM 파일을 수집하고 표준을 벗어난 파일이 배치를 멈추지 않도록 파서 검증을 완화했습니다."),
+          tx("Implemented 16 domain validation rules and kept each result as a per-row flag.", "16개 도메인 검증 규칙을 구현하고 결과는 행마다 플래그로 남겨 두었습니다."),
+          tx("Joined images to radiology reports and enforced the four-view (left/right × CC/MLO) study requirement.", "영상과 판독 리포트를 조인하고 한 검사에 좌우 × CC/MLO 4장이 모두 있어야 한다는 조건을 걸었습니다."),
           tx("Produced eight EDA summaries — patients, age, manufacturer, institution, period and labels — de-duplicated at study level.", "환자 수·연령·제조사·기관·기간·레이블 분포 등 EDA 8종을 검사 단위로 중복 제거해 산출했습니다."),
         ],
         others: [
@@ -559,7 +559,7 @@ export const projects: Project[] = [
       evaluation: [
         tx("Accounting at every stage — 85,054 → 56,394 → 32,863 → 31,796 — with invalid counts per rule.", "단계마다 건수를 맞췄습니다: 85,054 → 56,394 → 32,863 → 31,796, 규칙별 무효 건수 포함."),
         tx("Final profile checked: 7,294 patients (6,646 with 4 images, 641 with 8, 7 with 12); only PixelSpacing had missing values (942).", "최종 프로파일도 확인했습니다. 환자 7,294명(4장 6,646명, 8장 641명, 12장 7명), 결측은 PixelSpacing 942건뿐입니다."),
-        tx("File counts were read carefully: 85,429 files vs 85,407 .dcm is an extension difference, not a parsing failure.", "파일 수도 신중하게 해석했습니다. 85,429개와 .dcm 85,407개의 차이는 확장자 차이이지 파싱 실패가 아닙니다."),
+        tx("File counts were read carefully: 85,429 files vs 85,407 .dcm is an extension difference, not a parsing failure.", "파일 수도 신중하게 해석했습니다. 85,429개와 .dcm 85,407개의 차이는 확장자 때문입니다. 파싱 실패가 아닙니다."),
         tx("No model metrics are reported — this work ends at a validated dataset.", "모델 지표는 보고하지 않습니다. 이 작업은 검증된 데이터셋에서 끝납니다."),
       ],
       results: [
@@ -623,7 +623,7 @@ export const projects: Project[] = [
     detail: {
       context: tx(
         "Cloud AI assumes network, memory and power that an ER bedside device, a car cabin or a factory floor may not have. My interest is the system problem: which parts must run locally, what budget they get, and how to prove they fit — before claiming any performance.",
-        "클라우드 AI는 응급실 병상 옆 장치, 차량 실내, 공장 현장에 없을 수도 있는 네트워크·메모리·전력을 전제합니다. 제 관심은 시스템 문제입니다. 무엇이 로컬에서 돌아야 하는지, 어떤 예산을 줄지, 성능을 주장하기 전에 그 안에 들어간다는 것을 어떻게 증명할지.",
+        "클라우드 AI는 네트워크·메모리·전력을 전제합니다. 응급실 병상 옆 장치, 차량 실내, 공장 현장에는 없을 수도 있는 것들입니다. 제 관심은 시스템 문제입니다. 무엇이 로컬에서 돌아야 하는지, 어떤 예산을 줄지, 성능을 주장하기 전에 그 안에 들어간다는 것을 어떻게 증명할지.",
       ),
       roleShort: tx(
         "Two personal prototypes, plus the AI role in a four-person Jetson team",
@@ -631,7 +631,7 @@ export const projects: Project[] = [
       ),
       role: {
         mine: [
-          tx("Heart Disease Risk PoC (personal): fixed the deployment budget first, redesigned self-contradictory success criteria, and ran hypothesis-driven feature validation.", "심장병 리스크 PoC(개인): 배포 예산을 먼저 고정하고, 서로 모순되던 성공 기준을 다시 설계하고, 가설 기반으로 피처를 검증했습니다."),
+          tx("Heart Disease Risk PoC (personal): fixed the deployment budget first, redesigned self-contradictory success criteria, and ran hypothesis-driven feature validation.", "심장병 리스크 PoC(개인): 배포 예산을 먼저 고정하고 서로 모순되던 성공 기준을 다시 설계했습니다. 피처는 가설 기반으로 검증했습니다."),
           tx("In-cabin voice agent (personal): measured the token breakdown to size what an on-device intent model would actually have to prefill.", "차량 음성 에이전트(개인): 온디바이스 의도 모델이 실제로 처리해야 할 입력 크기를 알기 위해 토큰 구성을 측정했습니다."),
           tx("ShiftLink (team of four, POSCO K-Digital program): AI role — model comparison, extracting requests, conditions, negations and withdrawals from shift memos, grounding and structured-output validation, synthetic data generation and extraction evaluation.", "ShiftLink(4인 팀, POSCO K-디지털 과정): AI 담당 — 모델 비교, 교대 메모에서 요청·조건·부정·철회 추출, 근거 확인과 구조화 출력 검증, 합성 데이터 생성, 추출 성능 평가."),
         ],
@@ -672,7 +672,7 @@ export const projects: Project[] = [
           title: tx("Rewrite a success criterion no threshold could satisfy", "어떤 임계값으로도 만족할 수 없는 기준은 다시 쓰기"),
           why: tx(
             "The first spec required accuracy, sensitivity, specificity, AUROC and F1 all as hard gates at one threshold — metrics that peak at different thresholds. It became: maximize sensitivity subject to specificity ≥ 90%, with balanced accuracy replacing raw accuracy on 70/30 data.",
-            "처음 명세는 서로 다른 임계값에서 최대가 되는 정확도·민감도·특이도·AUROC·F1을 한 임계값에서 모두 필수로 만족하라고 요구했습니다. 이를 ‘특이도 90% 이상 조건에서 민감도 최대화’로 바꾸고, 70/30 불균형 데이터이므로 정확도 대신 균형 정확도를 썼습니다.",
+            "처음 명세는 정확도·민감도·특이도·AUROC·F1을 한 임계값에서 모두 필수로 만족하라고 요구했습니다. 이 지표들이 최대가 되는 임계값은 서로 다릅니다. 명세를 ‘특이도 90% 이상 조건에서 민감도 최대화’로 바꾸고, 70/30 불균형 데이터이므로 정확도 대신 균형 정확도를 썼습니다.",
           ),
         },
         {
@@ -724,8 +724,8 @@ export const projects: Project[] = [
       ],
       lessons: [
         tx("Fix the budget before the model — it turns “which model is best” into “which model fits”.", "모델보다 예산을 먼저 정하면 ‘어떤 모델이 최고인가’가 ‘어떤 모델이 들어가는가’로 바뀝니다."),
-        tx("A success criterion that no single threshold can meet is a bug in the spec, not in the model.", "어떤 임계값으로도 만족할 수 없는 성공 기준은 모델이 아니라 명세의 버그입니다."),
-        tx("Labels like “estimated” and “not measured” are part of the engineering, not a disclaimer.", "‘추정’, ‘미측정’ 같은 표시는 면책 문구가 아니라 엔지니어링의 일부입니다."),
+        tx("A success criterion that no single threshold can meet is a bug in the spec, not in the model.", "어떤 임계값으로도 만족할 수 없는 성공 기준은 명세의 버그입니다. 모델의 문제가 아닙니다."),
+        tx("Labels like “estimated” and “not measured” are part of the engineering, not a disclaimer.", "‘추정’, ‘미측정’ 같은 표시는 엔지니어링의 일부입니다. 면책 문구로 붙인 것이 아닙니다."),
       ],
       links: [
         { label: tx("Heart Disease Risk PoC repository", "심장병 리스크 PoC 저장소"), href: "https://github.com/nalziori/heart-disease-risk-poc" },
@@ -745,7 +745,7 @@ export const projects: Project[] = [
     status: tx("Startup (V-Medi) · lead and sole developer · Feb–Dec 2022", "스타트업(브이메디) · 리드·유일 개발자 · 2022.02–12"),
     summary: tx(
       "Joined as the only developer, found the inherited app had no backend API, proposed launching on the web first, and shipped in 3–4 weeks — then ran it to 1,000 registered members.",
-      "유일한 개발자로 합류해 인계받은 앱에 백엔드 API가 없다는 것을 확인하고, 웹 선출시를 제안해 3~4주 만에 출시했습니다. 이후 DB 기준 회원 1,000명까지 운영했습니다.",
+      "유일한 개발자로 합류해 인계받은 앱에 백엔드 API가 없음을 확인하고, 웹 선출시를 제안해 3~4주 만에 출시했습니다. 이후 DB 기준 회원 1,000명까지 운영했습니다.",
     ),
     technologies: ["Node.js", "Express", "MySQL", "AWS", "DNS", "OneSignal"],
     highlights: [
@@ -764,14 +764,14 @@ export const projects: Project[] = [
       ),
       role: {
         mine: [
-          tx("Analyzed the Python/Django app inherited from an outsourcing vendor and found the backend had no API at all.", "외주사에서 인계받은 Python·Django 앱 코드를 분석해 백엔드에 API가 하나도 없다는 것을 확인했습니다."),
-          tx("When the app launch had made little progress for nearly three months, proposed launching on the web first; the CEO agreed.", "앱 출시가 석 달 가까이 진척되지 않자 웹 선출시를 제안했고, 대표가 받아들였습니다."),
+          tx("Analyzed the Python/Django app inherited from an outsourcing vendor and found the backend had no API at all.", "외주사에서 인계받은 Python·Django 앱 코드를 분석해 백엔드에 API가 하나도 없음을 확인했습니다."),
+          tx("When the app launch had made little progress for nearly three months, proposed launching on the web first; the CEO agreed.", "앱 출시가 석 달 가까이 진척되지 않자 웹 선출시를 제안했고 대표가 받아들였습니다."),
           tx("Built Node.js + Express and MySQL servers on AWS with about 30 APIs, bought the domain and configured DNS, and launched in 3–4 weeks (official launch: June 6, 2022).", "AWS에 Node.js·Express 서버와 MySQL을 구축해 API 30여 개를 만들고, 도메인 구매와 DNS 연결까지 해 3~4주 만에 출시했습니다(정식 오픈 2022년 6월 6일)."),
           tx("Built parts of the front end: a rolling banner, the post editor and a related-news upload page.", "프론트엔드 일부(롤링 배너, 게시글 입력 창, 관련 기사 업로드 페이지)를 만들었습니다."),
           tx("Operated the service, including incident response while the early servers were unstable.", "초기 서버가 불안정하던 시기의 장애 대응을 포함해 서비스를 운영했습니다."),
         ],
         others: [
-          tx("The Android and iOS apps (September 2022) packaged the web app together with a front-end developer who joined later; web and app push via OneSignal was joint work.", "Android·iOS 앱(2022년 9월)은 이후 합류한 프론트엔드 개발자와 함께 웹앱을 패키징해 출시했고, OneSignal 웹·앱 푸시도 함께 구현했습니다."),
+          tx("The Android and iOS apps (September 2022) packaged the web app together with a front-end developer who joined later; web and app push via OneSignal was joint work.", "Android·iOS 앱(2022년 9월)은 이후 합류한 프론트엔드 개발자와 함께 웹앱을 패키징해 출시했고 OneSignal 웹·앱 푸시도 함께 구현했습니다."),
         ],
       },
       problem: [
@@ -794,7 +794,7 @@ export const projects: Project[] = [
           title: tx("Ship web first", "웹을 먼저 출시"),
           why: tx(
             "The team needed users more than it needed an app store listing. A web launch delivered the core service quickly, and the app followed in September as a packaged web app. The principle I took from it: ship what the team needs most right now, not what is technically hardest.",
-            "팀에 필요한 것은 앱스토어 등록보다 사용자였습니다. 웹 출시로 핵심 서비스를 빠르게 내놓았고, 앱은 9월에 웹앱 패키징으로 뒤따랐습니다. 여기서 얻은 원칙은 기술적으로 가장 어려운 것이 아니라 지금 팀에 가장 필요한 것을 먼저 출시한다는 것입니다.",
+            "팀에 필요한 것은 앱스토어 등록보다 사용자였습니다. 웹 출시로 핵심 서비스를 빠르게 내놓았고, 앱은 9월에 웹앱 패키징으로 뒤따랐습니다. 여기서 얻은 원칙은 지금 팀에 가장 필요한 것을 먼저 출시한다는 것입니다. 기술적으로 가장 어려운 것을 먼저 만들지 않습니다.",
           ),
           rejected: tx("Continuing to repair the inherited app.", "인계받은 앱을 계속 수리"),
         },
@@ -817,8 +817,8 @@ export const projects: Project[] = [
         { value: "1,000", label: tx("registered members", "회원 수"), context: tx("database count", "DB 기준"), evidence: "record" },
       ],
       lessons: [
-        tx("The most valuable thing to build is what the team needs now, not what is technically hardest.", "가장 가치 있는 일은 기술적으로 가장 어려운 것이 아니라 지금 팀에 가장 필요한 것입니다."),
-        tx("Speed has side effects: the fast launch brought early instability, and taught me to budget time for review and hardening.", "속도에는 부작용이 있습니다. 빠른 출시는 초기 불안정으로 이어졌고, 검수와 안정화에 시간을 배정해야 한다는 것을 배웠습니다."),
+        tx("The most valuable thing to build is what the team needs now, not what is technically hardest.", "가장 가치 있는 일은 지금 팀에 가장 필요한 것입니다. 기술적으로 가장 어려운 것이 아닙니다."),
+        tx("Speed has side effects: the fast launch brought early instability, and taught me to budget time for review and hardening.", "속도에는 부작용이 있습니다. 빠른 출시는 초기 불안정으로 이어졌고, 검수와 안정화에 시간을 배정해야 한다고 배웠습니다."),
         tx("Owning a live service — users, errors, a domain — is a different job from finishing a project.", "사용자·오류·도메인이 있는 실제 서비스를 책임지는 일은 프로젝트를 끝내는 일과 다릅니다."),
       ],
       links: [{ label: tx("Launch coverage (Medigate News, Korean)", "출시 보도 (메디게이트뉴스)"), href: "https://medigatenews.com/news/2110075911" }],
@@ -944,10 +944,10 @@ export const projects: Project[] = [
     year: "2026.05–06",
     status: tx("Personal project", "개인 프로젝트"),
     summary: tx(
-      "A C++ drone controller in Unreal Engine 5.7: Chaos physics with mass and damping as drag, Enhanced Input, PID attitude stabilization, hover mode, flip recovery, HUD and FPV camera. Fixed axis drift after UE 5.7 removed local-torque arguments by computing torque from the body's own forward and right vectors.",
-      "언리얼 엔진 5.7과 C++로 만든 드론 컨트롤러입니다. 질량·감쇠로 공기저항을 모사한 Chaos 물리, Enhanced Input, PID 자세 안정화, 호버 모드, 뒤집힘 복구, HUD와 FPV 카메라를 구현했습니다. UE 5.7에서 로컬 토크 인자가 사라져 조작 축이 틀어지던 문제는 기체의 전방·우측 벡터로 토크를 직접 계산해 해결했습니다.",
+      "A C++ drone controller in Unreal Engine 5.1–5.3: Chaos physics with mass and damping as drag, Enhanced Input, PID attitude stabilization, hover mode, flip recovery, HUD and FPV camera. The engine applies torque in world space, so axis drift was fixed by computing torque from the body's own forward and right vectors.",
+      "언리얼 엔진 5.1~5.3과 C++로 만든 드론 컨트롤러입니다. 질량·감쇠로 공기저항을 모사한 Chaos 물리, Enhanced Input, PID 자세 안정화, 호버 모드, 뒤집힘 복구, HUD와 FPV 카메라를 구현했습니다. 엔진이 토크를 월드 좌표계로 적용해 조작 축이 틀어지던 문제는 기체의 전방·우측 벡터로 토크를 직접 계산해 해결했습니다.",
     ),
-    technologies: ["C++", "Unreal Engine 5.7", "Chaos Physics", "PID control", "Git LFS"],
+    technologies: ["C++", "Unreal Engine 5.1–5.3", "Chaos Physics", "PID control", "Git LFS"],
     highlights: [],
     note: tx("Private repository · C++ for Unreal specialization (Coursera, 2023)", "비공개 저장소 · Coursera C++ for Unreal 전문과정 수료 (2023)"),
   },

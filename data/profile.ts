@@ -12,7 +12,7 @@ export const profile = {
   ),
   intro: tx(
     "I decide what a model should judge and what code must guarantee — then I measure before I trust it. Recent work: a multimodal agent checked on held-out data, a financial agent whose math never touches the LLM, and a voice agent that cannot approve its own actions.",
-    "모델이 판단할 것과 코드가 보장해야 할 것을 먼저 나누고, 믿기 전에 측정합니다. 최근에는 홀드아웃으로 검증한 멀티모달 에이전트, 금융 계산을 LLM에 맡기지 않는 금융 에이전트, 스스로 행동을 승인할 수 없는 차량 음성 에이전트를 만들었습니다.",
+    "모델이 판단할 것과 코드가 보장해야 할 것을 먼저 나누고, 믿기 전에 측정합니다. 최근에는 세 가지를 만들었습니다. 홀드아웃으로 검증한 멀티모달 에이전트, 금융 계산을 LLM에 맡기지 않는 금융 에이전트, 스스로 행동을 승인할 수 없는 차량 음성 에이전트입니다.",
   ),
   email: "wodud00744@gmail.com",
   github: "https://github.com/nalziori",
@@ -56,7 +56,7 @@ export const proof: Metric[] = [
 export const about: L[] = [
   tx(
     "I care less about building a model than about how a model should behave inside a real system: what it is allowed to decide, what must stay deterministic, and what happens when it is wrong.",
-    "저는 AI 모델을 만드는 것보다, 모델이 실제 시스템 안에서 어떻게 동작해야 하는지를 더 고민합니다. 모델에게 무엇을 판단하게 둘지, 무엇을 결정론적으로 고정할지, 틀렸을 때 어떤 일이 벌어지는지가 제 관심사입니다.",
+    "저는 AI 모델을 만드는 것보다 모델이 실제 시스템 안에서 어떻게 동작해야 하는지를 더 고민합니다. 모델에게 무엇을 판단하게 둘지, 무엇을 결정론적으로 고정할지, 틀렸을 때 어떤 일이 벌어지는지가 제 관심사입니다.",
   ),
   tx(
     "Across a multimodal notification agent, a financial decision agent, a vehicle voice agent, a medical-imaging data pipeline and edge-AI prototypes, I have designed the problem definition, evaluation criteria, deterministic logic and delivery together — not the model in isolation.",
@@ -91,7 +91,7 @@ export const principles: { title: L; body: L; proof: L; slug: string }[] = [
     title: tx("Fail Safely", "안전하게 실패한다"),
     body: tx(
       "When a value is missing, ask. When an action can't be undone, confirm. When the vehicle state makes it unsafe, refuse — and never let the model approve its own action. Pending confirmations live in local code the model can't write to.",
-      "값이 없으면 되묻고, 되돌릴 수 없는 동작은 확인을 받고, 차량 상태상 위험하면 거부합니다. 그리고 모델이 자기 행동을 승인하지 못하게 합니다. 확인 대기 상태는 모델이 건드릴 수 없는 로컬 코드에만 있습니다.",
+      "값이 없으면 되묻고 되돌릴 수 없는 동작은 확인을 받습니다. 차량 상태상 위험하면 거부합니다. 그리고 모델이 자기 행동을 승인하지 못하게 합니다. 확인 대기 상태는 로컬 코드에만 있습니다. 모델은 그 코드를 건드릴 수 없습니다.",
     ),
     proof: tx("In-Cabin Voice Agent", "차량 인캐빈 음성 에이전트"),
     slug: "in-cabin-voice-agent",
@@ -174,13 +174,13 @@ export const ui = {
     featured: tx("Featured Projects", "주요 프로젝트"),
     featuredIntro: tx(
       "Problem first, then the boundary between model and code, then how it was measured. Every number carries its source.",
-      "문제를 먼저 정의하고, 모델과 코드의 경계를 정하고, 어떻게 측정했는지까지 보여줍니다. 모든 숫자에는 출처를 붙였습니다.",
+      "문제를 먼저 정의하고 모델과 코드의 경계를 정한 다음, 어떻게 측정했는지까지 보여줍니다. 모든 숫자에는 출처를 붙였습니다.",
     ),
     other: tx("Other Projects", "그 밖의 프로젝트"),
     timeline: tx("Experience & Timeline", "경험과 타임라인"),
     timelineIntro: tx(
       "Not a list of fields — one direction: putting software, then AI, into systems that have to work.",
-      "여러 분야를 찍어 본 기록이 아니라 한 방향입니다. 소프트웨어를, 그리고 AI를 실제로 동작해야 하는 시스템에 넣는 일.",
+      "여러 분야를 찍어 본 기록은 아닙니다. 한 방향입니다. 소프트웨어를, 그리고 AI를 실제로 동작해야 하는 시스템에 넣는 일.",
     ),
     skills: tx("Skills, with Evidence", "기술 — 사용처와 함께"),
     skillsIntro: tx(

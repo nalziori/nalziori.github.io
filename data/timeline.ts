@@ -82,7 +82,7 @@ export const timeline: TimelineItem[] = [
     date: "2026.05–06",
     phase: "early",
     title: tx("UE5 drone flight simulator (C++)", "UE5 드론 비행 시뮬레이터 (C++)"),
-    body: tx("Physics, PID attitude control and input handling in Unreal Engine 5.7.", "언리얼 엔진 5.7에서 물리, PID 자세 제어, 입력 처리를 구현."),
+    body: tx("Physics, PID attitude control and input handling in Unreal Engine 5.1–5.3.", "언리얼 엔진 5.1~5.3에서 물리, PID 자세 제어, 입력 처리를 구현."),
   },
   {
     date: "2026.06",
